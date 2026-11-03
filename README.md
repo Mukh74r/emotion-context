@@ -7,6 +7,10 @@
 
 An open-source, privacy-first Manifest V3 browser extension for Chrome, Edge, and Firefox. When typing into AI chat interfaces (ChatGPT, Claude, Google Gemini), **Emotion Context** analyzes the emotional tone and conversational posture of your draft in real-time. Just before sending, it injects an **anti-sycophantic response format preference** so models provide concise, structured, and factual answers without appeasing or validating.
 
+<p align="center">
+  <img src="assets/demo.gif" alt="Emotion Context Demo - Real-Time Anti-Sycophancy Tone Detection" width="850">
+</p>
+
 ---
 
 ## ⚡ What It Does
