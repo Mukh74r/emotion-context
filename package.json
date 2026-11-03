@@ -4,6 +4,7 @@
   "type": "module",
   "description": "Browser extension that analyzes draft message emotional tone and appends formatting hints to optimize AI responses without triggering sycophancy.",
   "license": "MIT",
+  "author": "muhammed thajudheen",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
