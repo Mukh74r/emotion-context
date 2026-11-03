@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotion Context Settings</title>
+    <link rel="stylesheet" href="./src/options/options.css" />
+  </head>
+  <body>
+    <div class="options-container">
+      <header class="options-header">
+        <div class="brand">
+          <span class="logo-icon">🧭</span>
+          <h1>Emotion Context Settings</h1>
+        </div>
+        <p class="subtitle">
+          Fine-tune tone analysis, site preferences, and anti-sycophancy directives.
+        </p>
+      </header>
+
+      <main class="options-main">
+        <section class="settings-card">
+          <h2>General Controls</h2>
+          <div class="setting-item">
+            <div class="setting-info">
+              <label for="opt-global-enabled"><strong>Global Enable</strong></label>
+              <p>Master toggle for analyzing drafts and injecting formatting preferences.</p>
+            </div>
+            <input type="checkbox" id="opt-global-enabled" class="toggle-checkbox" />
+          </div>
+
+          <div class="setting-item">
+            <div class="setting-info">
+              <label for="opt-preview-mode"><strong>Preview Mode (Recommended)</strong></label>
+              <p>
+                Displays an editable preview box beneath the chat input so you can accept, adjust,
+                or discard hints prior to sending.
+              </p>
+            </div>
+            <input type="checkbox" id="opt-preview-mode" class="toggle-checkbox" />
+          </div>
+        </section>
+
+        <section class="settings-card">
+          <h2>Supported Sites</h2>
+          <p class="section-desc">Enable or disable Emotion Context per AI chat platform:</p>
+          <div class="site-list">
+            <div class="setting-item">
+              <div class="setting-info">
+                <label for="site-chatgpt"><strong>ChatGPT (chatgpt.com)</strong></label>
+              </div>
+              <input type="checkbox" id="site-chatgpt" class="toggle-checkbox" />
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label for="site-claude"><strong>Claude (claude.ai)</strong></label>
+              </div>
+              <input type="checkbox" id="site-claude" class="toggle-checkbox" />
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <label for="site-gemini"><strong>Google Gemini (gemini.google.com)</strong></label>
+              </div>
+              <input type="checkbox" id="site-gemini" class="toggle-checkbox" />
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-card">
+          <h2>Analysis Engine</h2>
+          <div class="setting-item-column">
+            <label><strong>Analyzer Mode</strong></label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="opt-analyzer-mode" value="local" checked />
+                <span
+                  ><strong>Local Mode (Default, Recommended)</strong> — 100% on-device heuristic
+                  analyzer. Zero network requests, instantaneous, and strictly private.</span
+                >
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="opt-analyzer-mode" value="llm" />
+                <span
+                  ><strong>Custom LLM Mode (Optional)</strong> — Send message drafts to your own AI
+                  provider using your personal API key.</span
+                >
+              </label>
+            </div>
+          </div>
+
+          <div id="llm-config-panel" class="llm-config-panel hidden">
+            <div class="warning-callout">
+              <span class="warning-icon">⚠️</span>
+              <div>
+                <strong>Privacy Notice:</strong> Enabling LLM mode sends your message draft text
+                directly to your specified AI provider. Your API key and drafts are stored strictly
+                on your device (<kbd>chrome.storage.local</kbd>) and are never routed through any
+                intermediary servers.
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="opt-api-key"><strong>Provider API Key:</strong></label>
+              <input type="password" id="opt-api-key" placeholder="sk-..." class="form-input" />
+            </div>
+
+            <div class="form-group">
+              <label for="opt-api-endpoint"><strong>API Endpoint URL:</strong></label>
+              <input
+                type="text"
+                id="opt-api-endpoint"
+                value="https://api.openai.com/v1/chat/completions"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="opt-model-name"><strong>Model Name:</strong></label>
+              <input type="text" id="opt-model-name" value="gpt-4o-mini" class="form-input" />
+            </div>
+          </div>
+        </section>
+
+        <section class="settings-card">
+          <h2>What Data Does This Use?</h2>
+          <div class="privacy-details">
+            <p>
+              <strong>Zero telemetry or analytics:</strong> Emotion Context does not bundle any
+              analytics libraries, telemetry probes, or tracking scripts.
+            </p>
+            <p>
+              <strong>Zero external servers:</strong> This open-source project operates no backends
+              or proxy servers whatsoever.
+            </p>
+            <p>
+              <strong>Ephemeral in-memory analysis:</strong> In local mode, all heuristic
+              evaluations happen synchronously in memory. Drafts and detected tones are discarded
+              immediately.
+            </p>
+            <p>
+              <strong>Strict minimum permissions:</strong> We request only host permissions for
+              ChatGPT, Claude, and Gemini plus local storage for configuration.
+            </p>
+          </div>
+        </section>
+
+        <div class="save-bar">
+          <button id="save-settings-btn" type="button" class="btn-primary">Save Settings</button>
+          <span id="save-status" class="save-status"></span>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="./src/options/options.ts"></script>
+  </body>
+</html>

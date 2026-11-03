@@ -1,0 +1,207 @@
+/* Emotion Context Extension Styles */
+
+.ec-root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #1f2937;
+  box-sizing: border-box;
+  z-index: 99999;
+}
+
+.ec-root * {
+  box-sizing: border-box;
+}
+
+/* Floating Tone Badge */
+.ec-floating-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  margin: 6px 0;
+  border-radius: 14px;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-size: 12px;
+  color: #4b5563;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.ec-floating-badge.ec-active {
+  border-color: #3b82f6;
+  color: #1d4ed8;
+  background-color: #eff6ff;
+}
+
+.ec-floating-badge.ec-disabled {
+  opacity: 0.65;
+  background-color: #f3f4f6;
+  border-color: #d1d5db;
+  color: #6b7280;
+}
+
+.ec-badge-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #9ca3af;
+}
+
+.ec-active .ec-badge-dot {
+  background-color: #3b82f6;
+}
+
+.ec-state-frustrated .ec-badge-dot {
+  background-color: #ef4444;
+}
+
+.ec-state-rushed .ec-badge-dot {
+  background-color: #f59e0b;
+}
+
+.ec-state-overwhelmed .ec-badge-dot {
+  background-color: #8b5cf6;
+}
+
+.ec-state-uncertain .ec-badge-dot {
+  background-color: #06b6d4;
+}
+
+.ec-state-distressed .ec-badge-dot {
+  background-color: #ec4899;
+}
+
+.ec-badge-toggle-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  font-size: 11px;
+  color: #6b7280;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+.ec-badge-toggle-btn:hover {
+  color: #111827;
+}
+
+/* Preview Box */
+.ec-preview-box {
+  margin: 8px 0;
+  padding: 10px 12px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-left: 3px solid #3b82f6;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.ec-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+}
+
+.ec-preview-textarea {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #334155;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  resize: vertical;
+  min-height: 48px;
+  margin-bottom: 8px;
+}
+
+.ec-preview-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.ec-btn {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.ec-btn-primary {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.ec-btn-primary:hover {
+  background-color: #1d4ed8;
+}
+
+.ec-btn-secondary {
+  background-color: #ffffff;
+  color: #475569;
+  border-color: #cbd5e1;
+}
+
+.ec-btn-secondary:hover {
+  background-color: #f1f5f9;
+  color: #1e293b;
+}
+
+/* Distress / Sensitivity Banner */
+.ec-distress-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 8px 0;
+  padding: 10px 14px;
+  background-color: #fffbeb;
+  border: 1px solid #fde68a;
+  border-left: 4px solid #f59e0b;
+  border-radius: 8px;
+  color: #92400e;
+  font-size: 13px;
+  line-height: 1.4;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.ec-distress-banner-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ec-distress-icon {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.ec-distress-dismiss-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  color: #b45309;
+  padding: 2px 6px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.ec-distress-dismiss-btn:hover {
+  background-color: #fef3c7;
+}

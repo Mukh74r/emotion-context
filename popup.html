@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Emotion Context</title>
+    <link rel="stylesheet" href="./src/popup/popup.css" />
+  </head>
+  <body>
+    <div class="popup-container">
+      <header class="popup-header">
+        <div class="header-title-row">
+          <span class="logo-icon">🧭</span>
+          <h1>Emotion Context</h1>
+        </div>
+        <span id="status-pill" class="status-pill">Active</span>
+      </header>
+
+      <main class="popup-main">
+        <div class="control-row">
+          <label for="global-toggle" class="control-label">
+            <strong>Extension Enabled</strong>
+            <span>Analyze and append tone directives</span>
+          </label>
+          <input type="checkbox" id="global-toggle" class="toggle-checkbox" checked />
+        </div>
+
+        <div class="control-row" id="site-control-row">
+          <label for="site-toggle" class="control-label">
+            <strong>Enable on this site</strong>
+            <span id="current-site-label">Current AI chat site</span>
+          </label>
+          <input type="checkbox" id="site-toggle" class="toggle-checkbox" checked />
+        </div>
+
+        <div class="control-row">
+          <label for="preview-toggle" class="control-label">
+            <strong>Preview Mode</strong>
+            <span>Review and edit before sending</span>
+          </label>
+          <input type="checkbox" id="preview-toggle" class="toggle-checkbox" checked />
+        </div>
+
+        <div class="control-row">
+          <label for="analyzer-mode-select" class="control-label">
+            <strong>Analyzer Mode</strong>
+            <span>Local on-device (default) or LLM</span>
+          </label>
+          <select id="analyzer-mode-select" class="form-select">
+            <option value="local">Local (On-Device, 100% Private)</option>
+            <option value="llm">Optional LLM Mode</option>
+          </select>
+        </div>
+
+        <div class="shortcut-tip">
+          <span>Keyboard shortcut to toggle: <kbd>Alt+Shift+E</kbd></span>
+        </div>
+
+        <details class="privacy-accordion">
+          <summary>What data does this use?</summary>
+          <div class="privacy-text">
+            <p>
+              <strong>100% On-Device by default:</strong> In local mode, zero network calls are
+              made. Your drafts, prompts, and tone analyses never leave your browser.
+            </p>
+            <p>
+              <strong>Zero storage of text:</strong> We never store or log your message content or
+              analysis results. Only your extension preferences are saved locally.
+            </p>
+            <p>
+              <strong>Zero telemetry:</strong> No tracking, no analytics, no third-party scripts.
+            </p>
+          </div>
+        </details>
+      </main>
+
+      <footer class="popup-footer">
+        <button id="open-options-btn" type="button" class="btn-link">
+          Extension Settings & LLM Config &rarr;
+        </button>
+      </footer>
+    </div>
+    <script type="module" src="./src/popup/popup.ts"></script>
+  </body>
+</html>
