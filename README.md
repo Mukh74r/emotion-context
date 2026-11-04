@@ -4,6 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-success.svg)](manifest.json)
 [![Zero Telemetry](https://img.shields.io/badge/Telemetry-Zero-brightgreen.svg)](PRIVACY.md)
+[![Research: Anti-Sycophancy](https://img.shields.io/badge/Research-Anti--Sycophancy-purple.svg)](RESEARCH.md)
 
 An open-source, privacy-first Manifest V3 browser extension for Chrome, Edge, and Firefox. When typing into AI chat interfaces (ChatGPT, Claude, Google Gemini), **Emotion Context** analyzes the emotional tone and conversational posture of your draft in real-time. Just before sending, it injects an **anti-sycophantic response format preference** so models provide concise, structured, and factual answers without appeasing or validating.
 
@@ -35,6 +36,8 @@ Emotion Context intervenes at the input layer:
 > **Research Guardrail:** Traditional prompt enhancers tell the AI _"the user is frustrated, please be gentle/validating"_. Empirical research demonstrates this triggers **LLM sycophancy**—causing models to agree with false premises, soften corrections, and apologize endlessly.
 >
 > Emotion Context **never diagnoses the user** or asks the model for emotional support. Instead, it enforces structural formatting constraints paired with an explicit epistemic guardrail that commands the model to preserve factual accuracy above all.
+>
+> 📖 _For the complete empirical rationale and methodology, see [RESEARCH.md](RESEARCH.md) by Muhammed Thajudheen S._
 
 | Detected State  | Injected Formatting Rule                                                                 | Epistemic Safeguard                                                                                                  |
 | --------------- | ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
