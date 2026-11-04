@@ -10,6 +10,7 @@ export class GeminiAdapter implements SiteAdapter {
   }
 
   public getInput(): HTMLElement | null {
+    if (typeof document === 'undefined') return null;
     // Isolated selectors for Gemini's rich-textarea editor
     const selectors = [
       'rich-textarea .ql-editor[contenteditable="true"]',

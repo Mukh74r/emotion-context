@@ -10,10 +10,11 @@ describe('Site Adapters Suite', () => {
   });
 
   describe('Adapter URL Matching', () => {
-    it('matches chatgpt.com URLs', () => {
+    it('matches chatgpt.com and chat.openai.com URLs', () => {
       const adapter = getAdapter('https://chatgpt.com/');
       expect(adapter).toBeInstanceOf(ChatGPTAdapter);
       expect(getAdapter('https://chatgpt.com/c/12345')).toBeInstanceOf(ChatGPTAdapter);
+      expect(getAdapter('https://chat.openai.com/')).toBeInstanceOf(ChatGPTAdapter);
     });
 
     it('matches claude.ai URLs', () => {

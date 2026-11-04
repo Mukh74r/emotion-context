@@ -148,6 +148,10 @@ export class ContentUI {
     }
   }
 
+  public getContainerElement(): HTMLElement {
+    return this.container;
+  }
+
   public destroy(): void {
     this.container.remove();
   }

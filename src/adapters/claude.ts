@@ -10,6 +10,7 @@ export class ClaudeAdapter implements SiteAdapter {
   }
 
   public getInput(): HTMLElement | null {
+    if (typeof document === 'undefined') return null;
     // Isolated selectors for Claude's ProseMirror editor
     const selectors = [
       'div.ProseMirror[contenteditable="true"]',

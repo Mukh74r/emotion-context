@@ -61,7 +61,7 @@ export class ContentController {
         }
       });
 
-      // Find input element (retry briefly for SPA hydration)
+      // Find input element with persistent SPA re-attachment
       this.bindDOM();
     } catch {
       // Fail open on any error
@@ -71,45 +71,63 @@ export class ContentController {
   public bindDOM(): void {
     if (!this.adapter) return;
 
-    this.inputElement = this.adapter.getInput();
-    if (!this.inputElement) {
-      // Retry for dynamically rendered SPAs
-      const observer = new MutationObserver(() => {
-        const el = this.adapter?.getInput();
-        if (el) {
-          observer.disconnect();
+    const attach = () => {
+      if (typeof document === 'undefined') return;
+      const el = this.adapter?.getInput();
+      if (el) {
+        if (
+          el !== this.inputElement ||
+          !this.ui ||
+          !document.contains(this.ui.getContainerElement())
+        ) {
           this.inputElement = el;
           this.setupListeners();
         }
-      });
+      }
+    };
 
+    // Immediate attempt
+    attach();
+
+    // Persistent observer for dynamic SPA re-renders (ChatGPT, Claude, Gemini)
+    if (typeof MutationObserver !== 'undefined' && document.body) {
+      const observer = new MutationObserver(() => {
+        attach();
+      });
       observer.observe(document.body, { childList: true, subtree: true });
-      return;
     }
 
-    this.setupListeners();
+    // Periodic safety check
+    setInterval(() => {
+      attach();
+    }, 1200);
   }
 
   private setupListeners(): void {
     if (!this.adapter || !this.inputElement) return;
 
     const container = this.adapter.getContainer() || this.inputElement.parentElement;
-    if (container && !this.ui) {
-      this.ui = new ContentUI(container, {
-        onToggleEnabled: () => this.toggleEnabled(),
-        onAcceptHint: (hint) => {
-          this.pendingHint = hint;
-          this.applyHintToInput();
-        },
-        onDismissHint: () => {
-          this.pendingHint = null;
-          this.userDismissedHintForDraft = true;
-        },
-      });
+    if (container) {
+      if (!this.ui || !document.contains(this.ui.getContainerElement())) {
+        this.ui?.destroy();
+        this.ui = new ContentUI(container, {
+          onToggleEnabled: () => this.toggleEnabled(),
+          onAcceptHint: (hint) => {
+            this.pendingHint = hint;
+            this.applyHintToInput();
+          },
+          onDismissHint: () => {
+            this.pendingHint = null;
+            this.userDismissedHintForDraft = true;
+          },
+        });
+      }
     }
 
-    // Input listening (debounced)
+    // Multi-event listening for cross-framework reactivity (React, Vue, ProseMirror, Quill)
     this.inputElement.addEventListener('input', () => this.onInputChanged());
+    this.inputElement.addEventListener('keyup', () => this.onInputChanged());
+    this.inputElement.addEventListener('focus', () => this.onInputChanged());
 
     // Enter key interception
     this.inputElement.addEventListener(
